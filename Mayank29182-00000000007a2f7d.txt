@@ -1,0 +1,144 @@
+#include<bits/stdc++.h> 
+using namespace std;
+
+#define ll long long 
+
+bool isprime(ll n)
+    {
+        for(int i=2;i*i<=n;i++)
+            {
+                if(n%i==0)
+                    return 0;
+            }
+        return 1;    
+    }
+
+int main()
+ {
+    
+    int t;
+    cin>>t;
+    for(int k=1;k<=t;k++)
+        {
+            cout<<"Case #"<<k<<": ";
+            ll z;
+            cin>>z;
+
+            // vector<ll> dp(z+1,1);
+
+            // vector<ll> primedp;
+
+            // dp[0]=0;
+            // dp[1]=0;
+
+            // for(ll i=2;i*i<=z;i++)
+            //     {
+            //         if(dp[i]==1)
+            //             {
+            //                 for(ll j=i;i*j<=z;j++)
+            //                     {
+            //                         dp[i*j]=0;
+            //                     }
+            //             }
+            //     }
+            // for(ll i=0;i<=z;i++)
+            //     {
+            //         if(dp[i]==1)
+            //             primedp.push_back(i);
+            //     }  
+            // // for(int i=0;i<primedp.size();i++)
+            // //     cout<<primedp[i];    
+
+            // ll l=primedp[0];ll r=primedp[1];
+            // ll m=0,n=1;
+            // while(l*r<=z)
+            //     {
+            //         m++;
+            //         n++;
+            //         l=primedp[m];
+            //         r=primedp[n];
+            //     }  
+            //     cout<<primedp[m-1]*primedp[n-1]<<endl;     
+
+            ll temp=sqrt(z);
+
+            int num1=1,num2=1,num3=1;
+
+            vector<ll> consec;
+            int cnt=0;
+            ll i=temp;
+            while(cnt<3)
+                {   
+                    if(isprime(i)){
+                        consec.push_back(i);
+                        cnt++;}
+                        i--;
+                }
+               int cnt1=0;
+                i=temp+1;
+             while(cnt1<3)
+                {   
+                    if(isprime(i)){
+                        consec.push_back(i);
+                        cnt1++;
+                        }
+                        i++;
+                }    
+
+               sort(consec.begin(),consec.end());
+
+               ll l=consec[0];
+               ll r=consec[1];
+                ll m=0,n=1;
+               while(l*r<=z && n<consec.size())
+                {
+                    m++,n++;
+                    l=consec[m];
+                    r=consec[n];
+                } 
+
+                cout<<consec[m-1]*consec[n-1]<<endl;
+
+            // if(isprime(temp)){
+            //     cout<<temp*temp<<endl;
+            //     continue;
+            //     }
+
+            // for(ll i=temp;i>=2;i--)
+            //     {
+            //         if(isprime(i))
+            //             {
+            //                 num1=i;
+            //                 break;
+            //             }
+            //     }
+            // for(ll i=temp;i<=z/2;i++)
+            //     {
+            //         if(isprime(i))
+            //             {
+            //                 num2=i;
+            //                 break;
+            //             }
+            //     }
+            //     if(num1*num2<=z)
+            //         cout<<num1*num2<<endl;  
+                 
+            //     else{
+            //         for(ll i=num1-1;i>=2;i--)
+            //             {
+            //                 if(isprime(i))
+            //                     {
+            //                         num3=i;
+            //                         break;
+
+            //                     }
+            //             }
+            //             cout<<num1*num3<<endl;
+            //     }      
+
+
+
+
+        }
+    return 0;
+ }
